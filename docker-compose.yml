@@ -9,7 +9,11 @@ services:
     depends_on:
        - dev-db
     environment:
-        - DATABASE_URL:${DATABASE_URL}  
+        - JWT_SECRET=${JWT_SECRET}
+        - DATABASE_URL=${DATABASE_URL}  
+    volumes:
+      - ./node_modules:/app/node_modules
+      - ./prisma:/app/prisma    
     networks:
      - MW11
 
