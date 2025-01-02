@@ -57,7 +57,6 @@ POSTGRES_DB= ""
 
 
 
-
 ## Project setup
 
 ```bash
