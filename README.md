@@ -22,6 +22,20 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+
+#.env
+Please Include the .env file values as they are not uploaded here 
+strucuture of .env 
+
+DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database_name>?schema=<schema_name>"
+JWT_SECRET=""
+SUPER_ADMIN_PASSWORD=""
+POSTGRES_USER= ""  
+POSTGRES_PASSWORD = ""
+ POSTGRES_DB= ""
+
+
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
