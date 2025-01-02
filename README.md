@@ -23,6 +23,13 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 
+
+
+
+
+## Description
+
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 ##.env
 
 
@@ -35,12 +42,6 @@ SUPER_ADMIN_PASSWORD=""
 POSTGRES_USER= ""  
 POSTGRES_PASSWORD = ""
  POSTGRES_DB= ""
-
-
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Project setup
 
