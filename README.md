@@ -27,104 +27,247 @@
 
 
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-##.env
+
 
 
 Please Include the .env file values as they are not uploaded here 
 strucuture of .env 
 
-
-
-
-
-
 DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database_name>?schema=<schema_name>"
 
 JWT_SECRET=""
+
 
 SUPER_ADMIN_PASSWORD=""
 
 POSTGRES_USER= ""  
 
 POSTGRES_PASSWORD = ""
-
-POSTGRES_DB= ""
-
+ POSTGRES_DB= ""
 
 
 
+## 1. Login Endpoint
+URL: /api/users/login
+Method: POST
+Description: Authenticates a user using the provided credentials and returns a JWT access token upon successful login.
 
-## Project setup
 
-```bash
-$ npm install
-```
+Headers:
 
-## Compile and run the project
+Content-Type: application/json
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
+Request Body:
+{
+  "username": "string",
+  "password": "string"
+}
 
-# production mode
-$ npm run start:prod
-```
 
-## Run tests
+404 Not Found
+Description: The username was not found in the database.
+Example:
 
-```bash
-# unit tests
-$ npm run test
+{
+  "statusCode": 404,
+  "message": "username was not found"
+}
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+401 Unauthorized
+Description: Incorrect password.
 
-## Deployment
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+## 2. Create a Comment for a Post
+URL: /api/posts/:postId/comments
+Method: POST
+Description: Creates a comment associated with a specific post.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Headers:
 
-## Resources
+Content-Type: application/json
+Path Parameters:
 
-Check out a few resources that may come in handy when working with NestJS:
+postId (integer): The ID of the post to associate the comment with.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-## Support
+Request Body:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+{
+  "content": "string"
+}
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+Responses:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+201 Created
+Description: Returns the created comment.
+Example:
+
+
+{
+  "id": 1,
+  "content": "This is a comment",
+  "postId": 123,
+  "createdAt": "2024-01-03T12:34:56.789Z"
+}
+
+
+404 Not Found
+Description: The specified post was not found.
+Example:
+
+{
+  "statusCode": 404,
+  "message": "Post was not found"
+}
+
+
+
+## 3. Get All Comments for a Post
+URL: /api/posts/:postId/comments
+Method: GET
+Description: Retrieves all comments associated with a specific post.
+
+Path Parameters:
+
+postId (integer): The ID of the post to fetch comments for.
+Responses:
+
+200 OK
+Description: Returns a list of comments associated with the specified post.
+Example:
+
+[
+  {
+    "id": 1,
+    "content": "This is a comment",
+    "postId": 123,
+    "createdAt": "2024-01-03T12:34:56.789Z"
+  },
+  {
+    "id": 2,
+    "content": "Another comment",
+    "postId": 123,
+    "createdAt": "2024-01-03T13:45:56.789Z"
+  }
+]
+
+
+
+404 Not Found
+Description: The specified post was not found or there are no comments for this post.
+Examples:
+{
+  "statusCode": 404,
+  "message": "Post was not found"
+}
+
+
+{
+  "statusCode": 404,
+  "message": "There are not comments for this post"
+}
+
+
+
+## 4. Get User Profile
+URL: /api/users/profile
+Method: GET
+Description: Retrieves the authenticated user's profile information.
+
+Headers:
+- Authorization: Bearer <JWT_TOKEN>
+
+Responses:
+200 OK
+Description: Returns the user profile data.
+Example:
+{
+  "id": 1,
+  "username": "string",
+  "role": "USER"
+}
+
+## 5. Update User Profile
+URL: /api/users/profile
+Method: PATCH
+Description: Updates the authenticated user's profile information.
+
+Headers:
+- Authorization: Bearer <JWT_TOKEN>
+- Content-Type: application/json
+
+Request Body:
+{
+  "username": "string",
+  "password": "string"
+}
+
+## 6. Create Post
+URL: /api/posts
+Method: POST
+Description: Creates a new post.
+
+Headers:
+- Content-Type: application/json
+
+Request Body:
+{
+  "title": "string",
+  "description": "string"
+}
+
+## 7. Get All Posts
+URL: /api/posts
+Method: GET
+Description: Retrieves all posts with their comments.
+
+Response:
+200 OK
+Example:
+[
+  {
+    "id": 1,
+    "title": "string",
+    "description": "string",
+    "createdAt": "2024-01-03T12:34:56.789Z",
+    "comment": []
+  }
+]
+
+## 8. Get Post by ID
+URL: /api/posts/:id
+Method: GET
+Description: Retrieves a specific post by its ID.
+
+Path Parameters:
+- id (integer): The ID of the post
+
+## 9. Get All Comments for a Post
+URL: /api/posts/:postId/comments
+Method: GET
+Description: Retrieves all comments for a specific post.
+
+Path Parameters:
+- postId (integer): The ID of the post
+
+## 10. Upload File
+URL: /api/posts/upload
+Method: POST
+Description: Uploads an image file (jpg, jpeg, or png).
+
+Headers:
+- Content-Type: multipart/form-data
+
+Form Data:
+- file: Image file (max size defined in configuration)
+
+Response:
+201 Created
+422 Unprocessable Entity (if file type is invalid)
