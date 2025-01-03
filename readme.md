@@ -5,6 +5,7 @@ DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database_name>?s
 
 JWT_SECRET=""
 
+
 SUPER_ADMIN_PASSWORD=""
 
 POSTGRES_USER= ""  
