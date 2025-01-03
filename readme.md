@@ -16,8 +16,11 @@ POSTGRES_DB= ""
 
 
 1. Login Endpoint
+2. 
 URL: /api/users/login
+
 Method: POST
+
 Description: Authenticates a user using the provided credentials and returns a JWT access token upon successful login.
 
 
@@ -29,35 +32,46 @@ Content-Type: application/json
 Request Body:
 {
   "username": "string",
+  
   "password": "string"
 }
 
 
 404 Not Found
 Description: The username was not found in the database.
+
 Example:
 
 {
   "statusCode": 404,
+  
   "message": "username was not found"
 }
 
 
+
 401 Unauthorized
+
 Description: Incorrect password.
 
 
 
 
 2. Create a Comment for a Post
+3. 
 URL: /api/posts/:postId/comments
+
+
 Method: POST
+
 Description: Creates a comment associated with a specific post.
 
 Headers:
 
 Content-Type: application/json
+
 Path Parameters:
+
 
 postId (integer): The ID of the post to associate the comment with.
 
@@ -73,20 +87,28 @@ Request Body:
 Responses:
 
 201 Created
+
 Description: Returns the created comment.
+
 Example:
 
 
 {
   "id": 1,
+  
   "content": "This is a comment",
+  
   "postId": 123,
+  
   "createdAt": "2024-01-03T12:34:56.789Z"
+  
 }
 
 
 404 Not Found
+
 Description: The specified post was not found.
+
 Example:
 
 {
