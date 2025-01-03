@@ -1,3 +1,15 @@
+
+<p align="center"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="NestJS Logo" /> </p> <h1 align="center">NestJS Application</h1> <p align="center"> A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications. </p> <p align="center"> <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a> <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="License" /></a> <a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="Build Status" /></a> </p>
+
+
+
+
+
+
+
+
+
+
 Please Include the .env file values as they are not uploaded here 
 strucuture of .env 
 
