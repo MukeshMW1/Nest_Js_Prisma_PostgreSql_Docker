@@ -16,7 +16,7 @@ POSTGRES_DB= ""
 
 
 1. Login Endpoint
-2. 
+
 URL: /api/users/login
 
 Method: POST
@@ -58,7 +58,7 @@ Description: Incorrect password.
 
 
 2. Create a Comment for a Post
-3. 
+
 URL: /api/posts/:postId/comments
 
 
@@ -182,6 +182,9 @@ Example:
   "username": "string",
   "role": "USER"
 }
+
+
+
 
 5. Update User Profile
 URL: /api/users/profile
